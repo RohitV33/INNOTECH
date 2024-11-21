@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Green Roof Mapper</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-text">Green Roof Mapper</div>
+        <div class="loader-progress"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fade-in" href="#">🌱 Urban Green Roof Mapper</a>
+            <div class="nav-links">
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <span class="nav-icon">🌿</span>
+                        Products
+                    </a>
+                    <div class="dropdown-menu product-menu">
+                        <div class="menu-header">
+                            <h5>Explore Our Solutions</h5>
+                            <p>Transform your urban spaces with our innovative products</p>
+                        </div>
+                        <div class="product-grid">
+                            <div class="product-category">
+                                <h6>Green Roof Systems</h6>
+                                <a href="#" class="dropdown-item" data-product="extensive">
+                                    <span class="product-icon">🌿</span>
+                                    <div class="item-content">
+                                        <span class="item-title">Extensive Systems</span>
+                                        <span class="item-desc">Lightweight, low-maintenance solutions</span>
+                                    </div>
+                                    <span class="hover-arrow">→</span>
+                                </a>
+                                <a href="#" class="dropdown-item" data-product="intensive">
+                                    <span class="product-icon">🌳</span>
+                                    <div class="item-content">
+                                        <span class="item-title">Intensive Systems</span>
+                                        <span class="item-desc">Deep-soil rooftop gardens</span>
+                                    </div>
+                                    <span class="hover-arrow">→</span>
+                                </a>
+                                <a href="#" class="dropdown-item" data-product="biodiverse">
+                                    <span class="product-icon">🌺</span>
+                                    <div class="item-content">
+                                        <span class="item-title">Biodiverse Roofs</span>
+                                        <span class="item-desc">Natural habitat creation</span>
+                                    </div>
+                                    <span class="hover-arrow">→</span>
+                                </a>
+                            </div>
+                            <div class="product-category">
+                                <h6>Components</h6>
+                                <a href="#" class="dropdown-item" data-product="drainage">
+                                    <span class="product-icon">💧</span>
+                                    <div class="item-content">
+                                        <span class="item-title">Smart Drainage</span>
+                                        <span class="item-desc">Advanced water management</span>
+                                    </div>
+                                    <span class="hover-arrow">→</span>
+                                </a>
+                                <a href="#" class="dropdown-item" data-product="media">
+                                    <span class="product-icon">🌱</span>
+                                    <div class="item-content">
+                                        <span class="item-title">Growing Media</span>
+                                        <span class="item-desc">Optimized soil solutions</span>
+                                    </div>
+                                    <span class="hover-arrow">→</span>
+                                </a>
+                                <a href="#" class="dropdown-item" data-product="barriers">
+                                    <span class="product-icon">🛡️</span>
+                                    <div class="item-content">
+                                        <span class="item-title">Root Barriers</span>
+                                        <span class="item-desc">Protection systems</span>
+                                    </div>
+                                    <span class="hover-arrow">→</span>
+                                </a>
+                            </div>
+                            <div class="featured-product">
+                                <div class="featured-badge">New</div>
+                                <div class="featured-content">
+                                    <h5>Smart Irrigation System</h5>
+                                    <p>AI-powered water management</p>
+                                    <ul class="feature-list">
+                                        <li>🤖 Smart automation</li>
+                                        <li>💧 Water savings up to 60%</li>
+                                        <li>📱 Mobile monitoring</li>
+                                    </ul>
+                                    <a href="#" class="featured-link">
+                                        Discover More
+                                        <span class="link-arrow">→</span>
+                                    </a>
+                                </div>
+                                <div class="featured-background"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#map" class="nav-link">Map</a>
+                <a href="#impact" class="nav-link">Impact</a>
+                <a href="#" class="nav-link login-btn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <img src="tree.png.png" alt="Green Roof Icon" class="hero-icon">
+            <h1 class="hero-title">Transform Urban Spaces</h1>
+            <div class="hero-subtitle">Into Green Havens</div>
+        </div>
+        <div class="scroll-indicator">
+            <img src="https://cdn-icons-png.flaticon.com/512/2985/2985150.png" alt="Scroll" class="scroll-icon">
+            Scroll to explore
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision-section">
+        <div class="vision-background"></div>
+        <div class="container">
+            <div class="vision-text">
+                <img src="https://cdn-icons-png.flaticon.com/512/1518/1518914.png" alt="Vision Icon" class="vision-icon">
+                <h2 class="section-title">Making cities greener,<br>one roof at a time.</h2>
+                <p class="section-description">We use technology and community engagement to transform urban landscapes into sustainable green spaces.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Counter with Animation -->
+    <section class="impact-section">
+        <div class="container">
+            <div class="row counter-row">
+                <div class="col-md-3">
+                    <div class="counter-wrapper">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4228/4228934.png" alt="Roof Icon" class="counter-icon">
+                        <div class="counter" data-target="500">0</div>
+                        <div class="counter-label">Green Roofs</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="counter-wrapper">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163661.png" alt="Area Icon" class="counter-icon">
+                        <div class="counter" data-target="50000">0</div>
+                        <div class="counter-label">Square Meters Greened</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="counter-wrapper">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3093/3093015.png" alt="Energy Icon" class="counter-icon">
+                        <div class="counter" data-target="25">0</div>
+                        <div class="counter-label">Energy Savings %</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="counter-wrapper">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3126/3126647.png" alt="Community Icon" class="counter-icon">
+                        <div class="counter" data-target="1000">0</div>
+                        <div class="counter-label">Active Users</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Replace the Map Section with this new Showcase Section -->
+    <section id="showcase" class="showcase-section">
+        <div class="container">
+            <div class="showcase-header">
+                <h2 class="text-center">Cities Reimagined</h2>
+                <p class="text-center">From Concrete Jungles to Living Ecosystems</p>
+            </div>
+            
+            <div class="showcase-grid">
+                <div class="showcase-item large">
+                    <img src="https://images.unsplash.com/photo-1523437345381-db5ee4df9c04?auto=format&fit=crop&w=1200" alt="Green Roof">
+                    <div class="showcase-content">
+                        <h3>Urban Evolution</h3>
+                        <p>Where Nature Meets Architecture</p>
+                        <div class="showcase-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🌡️</span>
+                                <span>30% Energy Savings</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🌿</span>
+                                <span>50% Less Heat</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="showcase-item">
+                    <img src="https://images.unsplash.com/photo-1518005068251-37900150dfca?auto=format&fit=crop&w=800" alt="Urban Garden">
+                    <div class="showcase-content">
+                        <h3>Rooftop Revolution</h3>
+                        <p>Growing Tomorrow's Food Today</p>
+                        <div class="showcase-tag">Sustainable Living</div>
+                    </div>
+                </div>
+                
+                <div class="showcase-item">
+                    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=800" alt="City View">
+                    <div class="showcase-content">
+                        <h3>Skyline Transformation</h3>
+                        <p>Building the Future, Naturally</p>
+                        <div class="showcase-tag">Urban Innovation</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefits-container">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🦋</div>
+                    <h4>Wildlife Haven</h4>
+                    <p>Creating urban sanctuaries for local species</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌊</div>
+                    <h4>Smart Water</h4>
+                    <p>Natural filtration & flood prevention</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">❄️</div>
+                    <h4>Climate Control</h4>
+                    <p>Natural cooling & heating solution</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💎</div>
+                    <h4>Property Plus</h4>
+                    <p>Boost your building's value naturally</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Replace the existing CTA section -->
+    <section class="cta-section">
+        <div class="light-rays"></div>
+        <div class="container">
+            <div class="cta-content">
+                <div class="animated-title">
+                    <div class="text-top">
+                        <div>
+                            <span>Ready to</span>
+                            <span>Transform Your City?</span>
+                        </div>
+                    </div>
+                    <div class="text-bottom">
+                        <div>Join the Green Revolution</div>
+                    </div>
+                </div>
+                
+                <p class="cta-subtitle typing-text">Making cities greener, one roof at a time</p>
+                
+                <div class="cta-stats">
+                    <div class="cta-stat fade-in-up">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="cta-stat fade-in-up" style="animation-delay: 0.2s;">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">m² Transformed</span>
+                    </div>
+                </div>
+                
+                <button class="cta-button glow-effect" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <span class="button-content">
+                        <span class="button-icon">🌱</span>
+                        <span class="button-text">Start Your Green Journey</span>
+                    </span>
+                    <span class="button-shine"></span>
+                </button>
+                
+                <div class="floating-badges">
+                    <span class="eco-badge">Eco-friendly</span>
+                    <span class="eco-badge">Sustainable</span>
+                    <span class="eco-badge">Innovation</span>
+                </div>
+                
+                <p class="cta-note shine-text">Join now and get a free consultation with our experts</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Login</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p class="text-center">Don't have an account? <a href="#">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Example JavaScript for login form validation
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email && password) {
+                alert('Login successful!');
+                // Implement login logic (e.g., API call) here
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+    </script>
+
+    <!-- Login Modal (Keep existing modal code) -->
+    <!-- ... -->
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="2.js"></script>
+</body>
+</html>
